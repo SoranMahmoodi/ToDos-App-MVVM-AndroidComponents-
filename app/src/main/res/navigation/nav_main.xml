@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/mainToDosFragment"
+        android:name="com.example.myapplication.ui.fragment.main.MainToDosFragment"
+        android:label="MainToDosFragment"
+        tools:layout="@layout/fragment_main_todo">
+        <action
+            android:id="@+id/action_mainToDosFragment_to_updateTodoDialogFragment"
+            app:destination="@id/updateTodoDialogFragment"
+            app:popUpTo="@id/mainToDosFragment">
+            <argument
+                android:name="updateToDo"
+                android:defaultValue="@null"
+                app:argType="com.example.myapplication.model.ToDo"
+                app:nullable="true" />
+        </action>
+        <action
+            android:id="@+id/action_mainToDosFragment_to_addTodoFragment"
+            app:destination="@id/addTodoFragment"
+            app:popUpTo="@id/mainToDosFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainToDosFragment_to_searchToDoToDoFragment"
+            app:destination="@id/searchToDoToDoFragment"
+            app:popUpTo="@id/mainToDosFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addTodoFragment"
+        android:name="com.example.myapplication.ui.fragment.addNewTodo.AddTodoFragment"
+        android:label="AddTodoFragment"
+        tools:layout="@layout/fragment_add_todo">
+        <action
+            android:id="@+id/action_addTodoFragment_to_mainToDosFragment"
+            app:destination="@id/mainToDosFragment"
+            app:popUpTo="@id/mainToDosFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/updateTodoDialogFragment"
+        android:name="com.example.myapplication.ui.fragment.updateTodo.UpdateTodoDialogFragment"
+        android:label="UpdateTodoDialogFragment"
+        tools:layout="@layout/fragment_todo_dialog_update">
+        <action
+            android:id="@+id/action_updateTodoDialogFragment_to_mainToDosFragment"
+            app:destination="@id/mainToDosFragment"
+            app:popUpTo="@id/mainToDosFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="updateToDo"
+            android:defaultValue="@null"
+            app:argType="com.example.myapplication.model.ToDo"
+            app:nullable="true" />
+
+    </dialog>
+
+    <fragment
+        android:id="@+id/searchToDoToDoFragment"
+        android:name="com.example.myapplication.ui.fragment.searchToDo.SearchToDoToDoFragment"
+        android:label="SearchToDoToDoFragment"
+        tools:layout="@layout/fragment_search_todo">
+        <action
+            android:id="@+id/action_searchToDoToDoFragment_to_mainToDosFragment"
+            app:destination="@id/mainToDosFragment"
+            app:popUpTo="@id/mainToDosFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.myapplication.ui.fragment.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_mainToDosFragment"
+            app:destination="@id/mainToDosFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

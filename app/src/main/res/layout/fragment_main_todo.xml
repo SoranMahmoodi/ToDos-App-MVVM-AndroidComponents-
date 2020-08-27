@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.ui.fragment.main.MainViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        tools:context=".ui.activity.main.MainActivity">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_frame">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tb_fragmentTodo_home"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text=" یادداشت ها"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btn_fragmentTodo_deleteAll"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:onClick="@{()-> viewModel.onClickDeleteAllItemTodo()}"
+                        android:src="@drawable/ic_delete_all_todos" />
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/edt_fragmentHome_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/background_edt_search"
+                    android:backgroundTint="@color/colorWhite"
+                    android:drawableRight="@drawable/ic_search"
+                    android:drawablePadding="8dp"
+                    android:gravity="right|center_vertical"
+                    android:hint="جستجو...."
+                    android:singleLine="true" />
+            </FrameLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main_toDo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab_main_addToDo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="اضافه یادداشت"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_add_todo"
+            app:iconTint="@color/colorWhite"
+            app:layout_anchor="@id/rv_main_toDo"
+            app:layout_anchorGravity="bottom|center_horizontal" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_fragmentTodo_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="list_empty.json"
+            app:lottie_loop="false" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

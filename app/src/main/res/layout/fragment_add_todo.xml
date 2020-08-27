@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="todo"
+            type="com.example.myapplication.model.ToDo" />
+
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.ui.fragment.addNewTodo.AddViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/btn_addNewTodo_save"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:onClick="@{()-> viewModel.onClickSave()}"
+                        android:src="@drawable/ic_done_add_todo" />
+
+                    <ImageView
+                        android:id="@+id/btn_addNewTodo_back"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:src="@drawable/ic_baseline_arrow_back" />
+
+                </RelativeLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:id="@+id/ll_addNewToDo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_addTodo_title"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginRight="32dp"
+                    android:hint="عنوان"
+                    app:error="@{viewModel.errorTitle}"
+                    app:errorEnabled="true">
+
+                    <EditText
+                        android:id="@+id/edt_addNew_todo_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.title}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="32dp"
+                    android:hint="یادداشت"
+                    app:error="@{viewModel.errorDescription}"
+                    app:errorEnabled="true">
+
+                    <EditText
+                        android:id="@+id/edt_addNew_todo_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top"
+                        android:text="@={viewModel.description}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_fragmentAdd_dataPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_tv_date"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="@={viewModel.datePicker}"
+                    android:textStyle="bold"
+                    tools:text="@string/app_name" />
+
+                <NumberPicker
+                    android:id="@+id/np_addNewTodo_priority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:value="@={viewModel.priority}" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+        <!-- <Button
+             android:id="@+id/btn_addNewTodo_save"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/ll_addNewToDo"
+             android:layout_centerHorizontal="true"
+             android:text="ذخیره کردن یاداشت"
+             android:textStyle="bold" />-->
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
