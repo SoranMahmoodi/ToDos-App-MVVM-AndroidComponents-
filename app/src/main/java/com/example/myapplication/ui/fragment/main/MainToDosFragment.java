@@ -45,8 +45,6 @@ public class MainToDosFragment extends BaseFragment<FragmentMainTodoBinding, Mai
         super.onViewCreated(view, savedInstanceState);
         getMViewModel().setCheckedCompleted(this);
         setListToDo();
-
-
     }
 
     @Override
