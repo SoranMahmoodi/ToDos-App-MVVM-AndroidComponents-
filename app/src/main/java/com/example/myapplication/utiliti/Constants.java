@@ -1,4 +1,5 @@
 package com.example.myapplication.utiliti;
 
-public class Constants {
+public interface Constants {
+    public static final int KEY_CODE = 1010;
 }
