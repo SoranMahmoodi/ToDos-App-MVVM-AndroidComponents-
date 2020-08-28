@@ -50,7 +50,7 @@
                 android:id="@+id/view_itemRaw"
                 android:layout_width="4dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:background="@{todo.completed? @drawable/background_view_accent : @drawable/background_view}"
                 tools:background="@drawable/background_view" />
 
@@ -85,7 +85,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="8dp"
@@ -116,11 +115,10 @@
                     android:id="@+id/cb_item_isCompleted"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
                     android:checked="@{todo.completed}" />
 
             </RelativeLayout>

@@ -138,7 +138,6 @@ public class SearchToDoToDoFragment extends BaseFragment<FragmentSearchTodoBindi
     public void onStart() {
         super.onStart();
         Log.i(TAG, "onStart: search");
-        requestFocus();
     }
 
     @Override
