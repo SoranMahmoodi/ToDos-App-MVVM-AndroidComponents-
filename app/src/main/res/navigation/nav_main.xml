@@ -23,12 +23,21 @@
         <action
             android:id="@+id/action_mainToDosFragment_to_addTodoFragment"
             app:destination="@id/addTodoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/mainToDosFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_mainToDosFragment_to_searchToDoToDoFragment"
             app:destination="@id/searchToDoToDoFragment"
-            app:popUpTo="@id/mainToDosFragment" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/mainToDosFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -39,6 +48,8 @@
         <action
             android:id="@+id/action_addTodoFragment_to_mainToDosFragment"
             app:destination="@id/mainToDosFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
             app:popUpTo="@id/mainToDosFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -69,6 +80,8 @@
         <action
             android:id="@+id/action_searchToDoToDoFragment_to_mainToDosFragment"
             app:destination="@id/mainToDosFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
             app:popUpTo="@id/mainToDosFragment"
             app:popUpToInclusive="true" />
     </fragment>
