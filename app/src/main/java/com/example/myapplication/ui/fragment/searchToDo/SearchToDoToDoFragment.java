@@ -23,7 +23,6 @@ import com.example.myapplication.model.ToDo;
 import com.example.myapplication.repository.RepositoryMangerImpl;
 import com.example.myapplication.repository.dataBase.ToDoHelperImpl;
 import com.example.myapplication.ui.base.BaseFragment;
-import com.example.myapplication.ui.fragment.updateTodo.UpdateTodoDialogFragment;
 
 public class SearchToDoToDoFragment extends BaseFragment<FragmentSearchTodoBinding, SearchToDoViewModel> implements SearchToDoNavigator {
     private static final String TAG = "SearchToDoToDoFragment";
@@ -73,11 +72,9 @@ public class SearchToDoToDoFragment extends BaseFragment<FragmentSearchTodoBindi
 
     @Override
     public void onClickUpdate(ToDo toDo) {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("update", toDo);
-        UpdateTodoDialogFragment dialogFragment = new UpdateTodoDialogFragment();
-        dialogFragment.show(getFragmentManager(), null);
-        dialogFragment.setArguments(bundle);
+        Navigation.findNavController(rootView)
+                .navigate(SearchToDoToDoFragmentDirections.actionSearchToDoToDoFragmentToUpdateTodoDialogFragment()
+                        .setUpdateToDo(toDo));
     }
 
     private void getSearchToDo() {

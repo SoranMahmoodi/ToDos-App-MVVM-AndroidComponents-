@@ -37,7 +37,11 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/mainToDosFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="false">
+            <argument
+                android:name="updateToDo"
+                app:argType="com.example.myapplication.model.ToDo" />
+        </action>
     </fragment>
 
     <fragment
@@ -84,6 +88,12 @@
             app:exitAnim="@anim/slide_out_right"
             app:popUpTo="@id/mainToDosFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="updateToDo"
+            app:argType="com.example.myapplication.model.ToDo" />
+        <action
+            android:id="@+id/action_searchToDoToDoFragment_to_updateTodoDialogFragment"
+            app:destination="@id/updateTodoDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
