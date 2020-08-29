@@ -1,12 +1,10 @@
 package com.example.myapplication.ui.fragment.splash;
 
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,18 +13,26 @@ import androidx.navigation.Navigation;
 
 import com.example.myapplication.R;
 
-public class SplashFragment extends Fragment {
+import java.util.Timer;
+import java.util.TimerTask;
 
-    private Runnable runnable;
-    private Handler handler = new Handler();
+public class SplashFragment extends Fragment {
+    private static final String TAG = "SplashFragment";
     private View rootView;
+    Timer timer = new Timer();
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setTimerSplash();
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_splash, container, false);
-            setTimerSplash();
         }
         return rootView;
     }
@@ -34,18 +40,26 @@ public class SplashFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 
-    private void fullScreenActivity() {
-        getActivity().requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
-                , WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
 
     private void setTimerSplash() {
-        runnable = () -> {
-            Navigation.findNavController(rootView).navigate(R.id.action_splashFragment_to_mainToDosFragment);
-        };
-        handler.postDelayed(runnable, 2500);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Navigation.findNavController(rootView).navigate(R.id.action_splashFragment_to_mainToDosFragment);
+
+            }
+        }, 1000, 2500);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop: ");
+        timer.purge();
+        timer.cancel();
+        timer = null;
     }
 }
